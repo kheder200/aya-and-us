@@ -18,7 +18,7 @@ const Navigation = () => {
           </div>
           <div className="text-primary-foreground">
             <div className="text-xs font-bold leading-none uppercase tracking-wide">
-              Aya Predict
+              Aya  and us [app]
             </div>
             <div className="text-xs font-medium leading-none">Catch the magic play!</div>
           </div>

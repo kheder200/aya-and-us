@@ -21,8 +21,8 @@ const GameReadsSection = () => {
     {
       id: 1,
       headline: "Why Team Barcelona will Dominate!",
-      preview: "Aya breaks down the defensive strategies for tonight's big game...",
-      fullText: "Aya breaks down the defensive strategies for tonight's big game. Barcelona's formation allows them to control the midfield with precision passing and quick transitions. Their defensive line has been incredibly solid this season, with key players showing excellent positioning and communication. The team's ability to press high and recover the ball quickly gives them a significant advantage. With their star striker in top form and the midfield creating countless opportunities, Barcelona is set to dominate this match.",
+      preview: "this articl wrtten by Aya arous she breaks down the defensive strategies for tonight's big game...",
+      fullText: "Aya breaks down the defensive strategies for tonight's big game. Barcelona's formation allows them to control the midfield with precision passing and quick transitions.",
       thumbnail: articleThumb1,
       icon: Flame,
       iconColor: "text-orange-300",
@@ -32,7 +32,7 @@ const GameReadsSection = () => {
       id: 2,
       headline: "Midfield Battle: The Key to Victory",
       preview: "Discover the tactical moves that could decide the match outcome...",
-      fullText: "Discover the tactical moves that could decide the match outcome. The midfield battle will be crucial in determining who takes control of the game. Both teams have exceptional playmakers who can dictate the tempo and create scoring opportunities. Watch for the defensive midfielders who will need to break up attacks and start counter-plays. The team that wins the midfield battle will likely dominate possession and create more chances. Expect to see intense duels, clever positioning, and strategic substitutions as coaches try to gain the upper hand in this critical area of the pitch.",
+      fullText: "Discover the tactical moves that could decide the match outcome. The midfield battle will be crucial in determining who takes control of the game. Both teams have exceptional playmakers who can dictate the tempo and create scoring opportunities.",
       thumbnail: articleThumb2,
       icon: Target,
       iconColor: "text-sky-300",
@@ -48,7 +48,7 @@ const GameReadsSection = () => {
     <div className="px-4 py-6">
       <div className="flex items-center justify-start mb-4">
         <h2 className="text-xl font-bold text-foreground">
-          Aya's Game Reads
+          Aya Arous Game Reads
         </h2>
       </div>
 

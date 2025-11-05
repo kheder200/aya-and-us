@@ -23,7 +23,7 @@ const RecentCollections = () => {
     <div className="px-4 py-6">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-bold text-foreground">
-          New Cards for Your Collection!
+          Your Cards and Album
         </h2>
         <Button variant="ghost" className="text-primary font-semibold text-sm p-0 h-auto hover:bg-transparent">
           View All

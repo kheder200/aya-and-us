@@ -26,12 +26,9 @@ const Index = () => {
 
       {/* Decorative Elements - Football themed */}
       <div className="fixed top-20 right-4 text-4xl opacity-25">⚽</div>
-      <div className="fixed bottom-32 left-4 text-3xl opacity-25">🥅</div>
-            <div className="fixed bottom-2/4 right-4 text-3xl opacity-25">🥅</div>
+     {/* <div className="fixed bottom-32 left-4 text-3xl opacity-25">🥅</div>*/}
 
-      <div className="fixed top-1/3 left-4 text-2xl opacity-25">🏃‍♀️</div>
       <div className="fixed bottom-1/4 right-4 text-3xl opacity-25">🏆</div>
-      <div className="fixed bottom-2/4 left-4 text-3xl opacity-25">🏆</div>
 
       {/* Footer */}
       <footer className="max-w-md mx-auto px-4 py-6 text-center">
