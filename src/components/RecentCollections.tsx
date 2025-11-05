@@ -34,72 +34,88 @@ const RecentCollections = () => {
 
   return (
     <section className="px-4 py-6">
-      <div className="overflow-hidden rounded-3xl border border-primary/30 bg-white/90 px-5 py-6 shadow-lg shadow-primary/20 backdrop-blur dark:border-white/10 dark:bg-gradient-to-br dark:from-primary/15 dark:via-secondary/10 dark:to-background/50">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="max-w-sm">
-            <Badge variant="outline" className="mb-3 flex items-center gap-2 border-primary/50 text-xs uppercase tracking-tight text-primary dark:border-white/30 dark:text-white">
-              <Sparkles className="h-3.5 w-3.5 text-amber-500 dark:text-amber-200" />
-              Album spotlight
+      {/* Mobile-first hero section */}
+      <div className="mb-6 overflow-hidden rounded-3xl bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100/80 p-6 shadow-xl shadow-pink-500/10 backdrop-blur-xl dark:from-pink-950/50 dark:via-rose-950/30 dark:to-pink-900/40 border border-pink-200/30 dark:border-pink-800/20">
+        {/* Mobile: Stack vertically, Desktop: Side by side */}
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex-1">
+            <Badge variant="outline" className="mb-4 inline-flex items-center gap-2 rounded-full border-pink-300/50 bg-pink-100/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-pink-700 backdrop-blur-sm dark:border-pink-700/30 dark:bg-pink-900/50 dark:text-pink-300">
+              <Sparkles className="h-3.5 w-3.5 text-pink-500" />
+              Album Spotlight
             </Badge>
-            <h2 className="text-2xl font-bold text-foreground">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white sm:text-2xl">
               Aya&apos;s album is in form
             </h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              You currently showcase {ownedCards.length} featured cards in your album. 
+            <p className="mt-3 text-sm leading-relaxed text-pink-700/80 dark:text-pink-300/80 sm:text-base">
+              You currently showcase {ownedCards.length} featured cards in your album.
               Keep building the set to unlock special chemistry bonuses and collector perks.
             </p>
           </div>
-          <div className="mx-auto sm:mx-0">
+
+          {/* Featured card - centered on mobile, right-aligned on desktop */}
+          <div className="mx-auto lg:mx-0">
             <PlayerCard
               playerName={featuredCard.name}
               playerNumber={featuredCard.number}
               rarity={featuredCard.rarity}
               imageUrl={featuredCard.image}
               emoji={featuredCard.emoji}
-              className="w-[150px]"
+              className="w-[140px] sm:w-[160px]"
             />
           </div>
         </div>
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-3">
+        {/* Album stats - responsive grid */}
+        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
           {albumStats.map((stat) => (
             <div
               key={stat.label}
-              className="rounded-2xl border border-primary/20 bg-primary/5 px-4 py-3 text-foreground/80 backdrop-blur-sm dark:border-white/15 dark:bg-white/10 dark:text-white/80"
+              className="rounded-2xl border border-pink-200/40 bg-white/60 p-4 backdrop-blur-sm shadow-sm shadow-pink-500/5 dark:border-pink-800/30 dark:bg-pink-950/40 dark:shadow-pink-500/10"
             >
-              <p className="text-[11px] uppercase tracking-wide">{stat.label}</p>
-              <p className="mt-1 text-lg font-semibold text-foreground dark:text-white">{stat.value}</p>
-              <p className="text-[11px] text-muted-foreground dark:text-white/70">{stat.note}</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-pink-600/70 dark:text-pink-400/70">
+                {stat.label}
+              </p>
+              <p className="mt-1 text-lg font-bold text-pink-900 dark:text-pink-100 sm:text-xl">
+                {stat.value}
+              </p>
+              <p className="text-xs text-pink-700/60 dark:text-pink-300/60">
+                {stat.note}
+              </p>
             </div>
           ))}
         </div>
 
+        {/* Upcoming cards hint */}
         {upcomingCards.length > 0 && !showAll && (
-          <p className="mt-4 text-xs text-muted-foreground">
-            {upcomingCards.length} watchlist {upcomingCards.length === 1 ? "card" : "cards"} ready to reveal once you expand the collection.
-          </p>
+          <div className="mt-4 rounded-xl bg-pink-100/50 p-3 dark:bg-pink-900/30">
+            <p className="text-xs text-pink-700 dark:text-pink-300">
+              {upcomingCards.length} watchlist {upcomingCards.length === 1 ? "card" : "cards"} ready to reveal once you expand the collection.
+            </p>
+          </div>
         )}
       </div>
 
-      <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h3 className="text-lg font-semibold text-foreground">
+      {/* Cards section header - mobile optimized */}
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex-1">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white sm:text-xl">
             Latest Cards for Your Album
           </h3>
-          <p className="text-sm text-muted-foreground">
+          <p className="mt-1 text-sm text-pink-700/70 dark:text-pink-300/70">
             Cards below are already in your vault. Expand to preview upcoming drops and wishlist picks.
           </p>
         </div>
         <Button
           variant="ghost"
-          className="inline-flex items-center gap-1 self-start rounded-full text-primary hover:bg-primary/10"
+          className="inline-flex h-10 items-center gap-2 self-start rounded-full border border-pink-300/40 bg-pink-50/50 px-4 text-sm font-medium text-pink-700 hover:bg-pink-100/70 hover:text-pink-800 dark:border-pink-700/30 dark:bg-pink-900/30 dark:text-pink-300 dark:hover:bg-pink-800/40 dark:hover:text-pink-200"
         >
           View album
           <ChevronRight className="h-4 w-4" />
         </Button>
       </div>
 
-      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {/* Cards grid - mobile-first responsive */}
+      <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {displayedCards.map((card, index) => (
           <PlayerCard
             key={`${card.name}-${index}`}
@@ -108,14 +124,15 @@ const RecentCollections = () => {
             rarity={card.rarity}
             imageUrl={card.image}
             emoji={card.emoji}
-            className="w-full max-w-[200px]"
+            className="w-full"
           />
         ))}
       </div>
 
+      {/* Expand button - mobile optimized */}
       <Button
         onClick={() => setShowAll(!showAll)}
-        className="mt-6 w-full rounded-2xl border border-primary/40 bg-primary/90 py-4 text-primary-foreground shadow-sm transition-all hover:shadow-primary/40 dark:bg-gradient-to-r dark:from-primary dark:to-secondary"
+        className="w-full rounded-2xl border border-pink-300/50 bg-gradient-to-r from-pink-500 to-rose-500 py-4 text-sm font-semibold text-white shadow-lg shadow-pink-500/25 transition-all hover:shadow-pink-500/40 hover:shadow-xl dark:border-pink-700/30 dark:from-pink-600 dark:to-rose-600"
       >
         {showAll ? "Show fewer cards" : `Expand to view ${upcomingCards.length} more`}
       </Button>
