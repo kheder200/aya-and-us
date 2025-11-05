@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 330 100% 98%;
+    --foreground: 270 50% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 270 50% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 50% 20%;
+
+    --primary: 330 81% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 70% 65%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 330 40% 96%;
+    --muted-foreground: 270 30% 50%;
+
+    --accent: 210 100% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 160 84% 52%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 330 30% 90%;
+    --input: 330 30% 90%;
+    --ring: 330 81% 60%;
+
+    --radius: 1rem;
+
+    /* Custom gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(330 81% 60%), hsl(270 70% 65%));
+    --gradient-hero: linear-gradient(180deg, hsl(330 100% 98%), hsl(270 100% 98%));
+    --gradient-card: linear-gradient(135deg, hsl(330 100% 97%), hsl(210 100% 97%));
+    
+    /* Colorful shadows */
+    --shadow-pink: 0 10px 30px -10px hsl(330 81% 60% / 0.3);
+    --shadow-purple: 0 10px 30px -10px hsl(270 70% 65% / 0.3);
+    --shadow-glow: 0 0 40px hsl(330 81% 80% / 0.4);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 270 50% 10%;
+    --foreground: 330 100% 98%;
+
+    --card: 270 30% 15%;
+    --card-foreground: 330 100% 98%;
+
+    --popover: 270 30% 15%;
+    --popover-foreground: 330 100% 98%;
+
+    --primary: 330 81% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 70% 65%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 270 30% 20%;
+    --muted-foreground: 330 40% 70%;
+
+    --accent: 210 100% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 160 84% 52%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 30% 25%;
+    --input: 270 30% 25%;
+    --ring: 330 81% 60%;
+
+    /* Custom gradients for dark mode */
+    --gradient-primary: linear-gradient(135deg, hsl(330 81% 60%), hsl(270 70% 65%));
+    --gradient-hero: linear-gradient(180deg, hsl(270 50% 10%), hsl(270 40% 15%));
+    --gradient-card: linear-gradient(135deg, hsl(270 30% 15%), hsl(270 35% 18%));
+    
+    /* Colorful shadows for dark mode */
+    --shadow-pink: 0 10px 30px -10px hsl(330 81% 60% / 0.5);
+    --shadow-purple: 0 10px 30px -10px hsl(270 70% 65% / 0.5);
+    --shadow-glow: 0 0 40px hsl(330 81% 80% / 0.6);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-poppins;
+  }
+}
+
+@layer utilities {
+  .animate-sparkle {
+    animation: sparkle 2s infinite;
+  }
+  
+  @keyframes sparkle {
+    0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+    50% { opacity: 0.6; transform: scale(1.1) rotate(180deg); }
+  }
+
+  .animate-rotate-hero {
+    animation: rotate-hero 6s linear infinite;
+  }
+
+  @keyframes rotate-hero {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .animate-girl-ready {
+    animation: girl-ready 3s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  @keyframes girl-ready {
+    0%, 100% { transform: translate(0, 0) rotate(-4deg) scale(1); }
+    50% { transform: translate(-2px, -3px) rotate(6deg) scale(1.08); }
+  }
+
+  .animate-theme-pulse {
+    animation: theme-pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes theme-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+  
+  .animate-bounce-slow {
+    animation: bounce 3s infinite;
+  }
+}
