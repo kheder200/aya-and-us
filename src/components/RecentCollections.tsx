@@ -76,8 +76,8 @@ const RecentCollections = () => {
         <h3 className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest">
           Your Progress
         </h3>
-        <div className="rounded-2xl bg-gradient-to-br from-white to-pink-50/30 dark:from-gray-900/50 dark:to-pink-950/30 p-4 border border-pink-200/30 dark:border-pink-800/20">
-          <div className="grid grid-cols-4 gap-3">
+        <div className="rounded-2xl bg-gradient-to-br from-white to-pink-50/30 dark:from-gray-900/50 dark:to-pink-950/30 p-3 border border-pink-200/30 dark:border-pink-800/20">
+          <div className="grid grid-cols-6 gap-2">
             {albumSlots.map((slot) => (
               <div
                 key={slot.slot}
@@ -99,11 +99,13 @@ const RecentCollections = () => {
                     />
                   </div>
                 ) : (
-                  <div className="aspect-[3/4] bg-gradient-to-br from-gray-200/40 to-gray-300/40 dark:from-gray-700/30 dark:to-gray-800/30 flex items-center justify-center relative overflow-hidden">
+                  <div className="aspect-[3/4] bg-gradient-to-br from-gray-200/40 to-gray-300/40 dark:from-gray-700/30 dark:to-gray-800/30 relative overflow-hidden">
                     <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_1px,rgba(0,0,0,0.05)_1px,rgba(0,0,0,0.05)_2px)] dark:bg-[repeating-linear-gradient(45deg,transparent,transparent_1px,rgba(255,255,255,0.05)_1px,rgba(255,255,255,0.05)_2px)]"></div>
-                    <div className="relative text-center text-[10px] text-gray-500/60 dark:text-gray-400/60 font-semibold">
-                      <div>SLOT</div>
-                      <div>{slot.slot.toString().padStart(2, '0')}</div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center text-[9px] text-gray-500/70 dark:text-gray-400/70 font-bold leading-tight">
+                        <div>SLOT</div>
+                        <div>{slot.slot.toString().padStart(2, '0')}</div>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -113,25 +115,32 @@ const RecentCollections = () => {
         </div>
       </div>
 
-      {/* Featured Cards - Top 3 */}
+      {/* Featured Cards - Scrollable */}
       {ownedCards.length > 0 && (
         <div className="space-y-3">
           <h3 className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest">
             Currently Owned ({ownedCards.length})
           </h3>
-          <div className="grid grid-cols-3 gap-3">
-            {ownedCards.slice(0, 3).map((card, index) => (
-              <div key={index} className="space-y-2">
-                <PlayerCard
-                  playerName={card.name}
-                  playerNumber={card.number}
-                  rarity={card.rarity}
-                  imageUrl={card.image}
-                  emoji={card.emoji}
-                  className="w-full"
-                />
+          <div className="relative">
+            <div className="overflow-x-auto scrollbar-hide">
+              <div className="flex gap-3 pb-2">
+                {ownedCards.map((card, index) => (
+                  <div key={index} className="flex-shrink-0 w-[calc(33.333%-8px)]">
+                    <PlayerCard
+                      playerName={card.name}
+                      playerNumber={card.number}
+                      rarity={card.rarity}
+                      imageUrl={card.image}
+                      emoji={card.emoji}
+                      className="w-full"
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            {ownedCards.length > 3 && (
+              <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white dark:from-gray-900 pointer-events-none"></div>
+            )}
           </div>
         </div>
       )}

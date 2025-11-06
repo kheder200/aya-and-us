@@ -150,4 +150,13 @@ All colors MUST be HSL.
   .animate-bounce-slow {
     animation: bounce 3s infinite;
   }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }

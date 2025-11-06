@@ -21,7 +21,7 @@ const Navigation = () => {
           variant="ghost"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           aria-label="Toggle theme"
-          className="w-9 h-9 rounded-lg hover:bg-pink-100/50 dark:hover:bg-pink-950/50"
+          className="w-9 h-9 rounded-lg hover:bg-pink-100/50 dark:hover:bg-pink-950/50 animate-theme-pulse"
         >
           {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
         </Button>
