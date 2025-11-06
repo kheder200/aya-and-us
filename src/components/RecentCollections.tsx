@@ -1,141 +1,172 @@
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronRight, Sparkles } from "lucide-react";
+import { ChevronRight, Sparkles, Trophy, Star, Lock } from "lucide-react";
 import PlayerCard from "./PlayerCard";
 import playerCard1 from "@/assets/player-card-1.png";
 import playerCard2 from "@/assets/player-card-2.png";
 import playerCard3 from "@/assets/player-card-3.png";
+import playerCard4 from "@/assets/player-card-4.png";
+import playerCard5 from "@/assets/player-card-5.png";
 
 const RecentCollections = () => {
   const [showAll, setShowAll] = useState(false);
 
-  const allCards = [
-    { name: "Rosa Strike", number: 1, rarity: "legendary" as const, image: playerCard1 },
-    { name: "Azure Ace", number: 7, rarity: "rare" as const, image: playerCard2 },
-    { name: "Violet Power", number: 5, rarity: "rare" as const, image: playerCard3 },
-    { name: "Golden Star", number: 2, rarity: "legendary" as const, emoji: "⭐" },
-    { name: "Green Thunder", number: 9, rarity: "rare" as const, emoji: "⚡" },
-  ];
+  const albumSlots = Array.from({ length: 12 }, (_, index) => ({
+    slot: index + 1,
+    owned: index < 5,
+    card: index < 5 ? [
+      { name: "Rosa Strike", number: 1, rarity: "legendary" as const, image: playerCard1 },
+      { name: "Azure Ace", number: 7, rarity: "rare" as const, image: playerCard2 },
+      { name: "Violet Power", number: 5, rarity: "rare" as const, image: playerCard3 },
+      { name: "Golden Star", number: 2, rarity: "legendary" as const, image: playerCard4 },
+      { name: "Green Thunder", number: 9, rarity: "rare" as const, image: playerCard5 },
+    ][index] : null
+  }));
 
-  const ownedCards = allCards.slice(0, 3);
-  const upcomingCards = allCards.slice(3);
-  const displayedCards = showAll ? allCards : ownedCards;
+  const ownedCards = albumSlots.filter(slot => slot.owned).map(slot => slot.card!);
+  const missingCards = albumSlots.filter(slot => !slot.owned);
   const featuredCard = ownedCards[0];
 
   const albumStats = useMemo(
     () => [
-      { label: "Album level", value: "Gold III", note: "+2 boosts this week" },
-      { label: "Legendary set", value: "7 / 12", note: "3 more for full shine" },
-      { label: "Trade streak", value: "5 days", note: "Keep momentum!" },
+      { label: "Album completion", value: "5 / 12", note: "42% complete" },
+      { label: "Legendary owned", value: "2 / 4", note: "50% legendary rate" },
+      { label: "Collection value", value: "2,450", note: "+180 this week" },
     ],
     []
   );
 
   return (
-    <section className="px-4 py-6">
-      {/* Mobile-first hero section */}
-      <div className="mb-6 overflow-hidden rounded-3xl bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100/80 p-6 shadow-xl shadow-pink-500/10 backdrop-blur-xl dark:from-pink-950/50 dark:via-rose-950/30 dark:to-pink-900/40 border border-pink-200/30 dark:border-pink-800/20">
-        {/* Mobile: Stack vertically, Desktop: Side by side */}
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex-1">
-            <Badge variant="outline" className="mb-4 inline-flex items-center gap-2 rounded-full border-pink-300/50 bg-pink-100/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-pink-700 backdrop-blur-sm dark:border-pink-700/30 dark:bg-pink-900/50 dark:text-pink-300">
-              <Sparkles className="h-3.5 w-3.5 text-pink-500" />
-              Album Spotlight
-            </Badge>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white sm:text-2xl">
-              Aya&apos;s album is in form
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-pink-700/80 dark:text-pink-300/80 sm:text-base">
-              You currently showcase {ownedCards.length} featured cards in your album.
-              Keep building the set to unlock special chemistry bonuses and collector perks.
-            </p>
-          </div>
-
-          {/* Featured card - centered on mobile, right-aligned on desktop */}
-          <div className="mx-auto lg:mx-0">
-            <PlayerCard
-              playerName={featuredCard.name}
-              playerNumber={featuredCard.number}
-              rarity={featuredCard.rarity}
-              imageUrl={featuredCard.image}
-              emoji={featuredCard.emoji}
-              className="w-[140px] sm:w-[160px]"
-            />
-          </div>
+    <section className="px-4 py-8 space-y-8">
+      {/* Album Header with Stats */}
+      <div className="space-y-4">
+        <div className="flex items-center gap-2">
+          <Trophy className="h-5 w-5 text-pink-500" />
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            Aya&apos;s Album
+          </h2>
+          <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            {ownedCards.length}/12
+          </span>
         </div>
-
-        {/* Album stats - responsive grid */}
-        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+        
+        <div className="grid grid-cols-3 gap-2">
           {albumStats.map((stat) => (
             <div
               key={stat.label}
-              className="rounded-2xl border border-pink-200/40 bg-white/60 p-4 backdrop-blur-sm shadow-sm shadow-pink-500/5 dark:border-pink-800/30 dark:bg-pink-950/40 dark:shadow-pink-500/10"
+              className="rounded-xl border border-pink-200/50 bg-pink-50/50 dark:border-pink-800/30 dark:bg-pink-950/30 p-3"
             >
-              <p className="text-xs font-semibold uppercase tracking-wider text-pink-600/70 dark:text-pink-400/70">
+              <p className="text-xs font-semibold text-pink-600/70 dark:text-pink-400/70 uppercase tracking-wider">
                 {stat.label}
               </p>
-              <p className="mt-1 text-lg font-bold text-pink-900 dark:text-pink-100 sm:text-xl">
+              <p className="mt-1 text-base font-bold text-pink-900 dark:text-pink-100">
                 {stat.value}
               </p>
-              <p className="text-xs text-pink-700/60 dark:text-pink-300/60">
+              <p className="text-[11px] text-pink-700/60 dark:text-pink-300/60">
                 {stat.note}
               </p>
             </div>
           ))}
         </div>
+      </div>
 
-        {/* Upcoming cards hint */}
-        {upcomingCards.length > 0 && !showAll && (
-          <div className="mt-4 rounded-xl bg-pink-100/50 p-3 dark:bg-pink-900/30">
-            <p className="text-xs text-pink-700 dark:text-pink-300">
-              {upcomingCards.length} watchlist {upcomingCards.length === 1 ? "card" : "cards"} ready to reveal once you expand the collection.
-            </p>
+      {/* Main Album Grid - Visual Showcase */}
+      <div className="space-y-3">
+        <h3 className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest">
+          Your Progress
+        </h3>
+        <div className="rounded-2xl bg-gradient-to-br from-white to-pink-50/30 dark:from-gray-900/50 dark:to-pink-950/30 p-4 border border-pink-200/30 dark:border-pink-800/20">
+          <div className="grid grid-cols-4 gap-3">
+            {albumSlots.map((slot) => (
+              <div
+                key={slot.slot}
+                className={`relative overflow-hidden rounded-lg transition-all ${
+                  slot.owned && slot.card
+                    ? "ring-2 ring-pink-400 dark:ring-pink-500"
+                    : ""
+                }`}
+              >
+                {slot.owned && slot.card ? (
+                  <div className="aspect-[3/4]">
+                    <PlayerCard
+                      playerName={slot.card.name}
+                      playerNumber={slot.card.number}
+                      rarity={slot.card.rarity}
+                      imageUrl={slot.card.image}
+                      emoji={slot.card.emoji}
+                      className="h-full w-full border-0 bg-transparent shadow-none"
+                    />
+                  </div>
+                ) : (
+                  <div className="aspect-[3/4] bg-gradient-to-br from-gray-200/40 to-gray-300/40 dark:from-gray-700/30 dark:to-gray-800/30 flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_1px,rgba(0,0,0,0.05)_1px,rgba(0,0,0,0.05)_2px)] dark:bg-[repeating-linear-gradient(45deg,transparent,transparent_1px,rgba(255,255,255,0.05)_1px,rgba(255,255,255,0.05)_2px)]"></div>
+                    <div className="relative text-center text-[10px] text-gray-500/60 dark:text-gray-400/60 font-semibold">
+                      <div>SLOT</div>
+                      <div>{slot.slot.toString().padStart(2, '0')}</div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
-        )}
-      </div>
-
-      {/* Cards section header - mobile optimized */}
-      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div className="flex-1">
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white sm:text-xl">
-            Latest Cards for Your Album
-          </h3>
-          <p className="mt-1 text-sm text-pink-700/70 dark:text-pink-300/70">
-            Cards below are already in your vault. Expand to preview upcoming drops and wishlist picks.
-          </p>
         </div>
-        <Button
-          variant="ghost"
-          className="inline-flex h-10 items-center gap-2 self-start rounded-full border border-pink-300/40 bg-pink-50/50 px-4 text-sm font-medium text-pink-700 hover:bg-pink-100/70 hover:text-pink-800 dark:border-pink-700/30 dark:bg-pink-900/30 dark:text-pink-300 dark:hover:bg-pink-800/40 dark:hover:text-pink-200"
-        >
-          View album
-          <ChevronRight className="h-4 w-4" />
-        </Button>
       </div>
 
-      {/* Cards grid - mobile-first responsive */}
-      <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {displayedCards.map((card, index) => (
-          <PlayerCard
-            key={`${card.name}-${index}`}
-            playerName={card.name}
-            playerNumber={card.number}
-            rarity={card.rarity}
-            imageUrl={card.image}
-            emoji={card.emoji}
-            className="w-full"
-          />
-        ))}
-      </div>
+      {/* Featured Cards - Top 3 */}
+      {ownedCards.length > 0 && (
+        <div className="space-y-3">
+          <h3 className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest">
+            Currently Owned ({ownedCards.length})
+          </h3>
+          <div className="grid grid-cols-3 gap-3">
+            {ownedCards.slice(0, 3).map((card, index) => (
+              <div key={index} className="space-y-2">
+                <PlayerCard
+                  playerName={card.name}
+                  playerNumber={card.number}
+                  rarity={card.rarity}
+                  imageUrl={card.image}
+                  emoji={card.emoji}
+                  className="w-full"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
-      {/* Expand button - mobile optimized */}
-      <Button
-        onClick={() => setShowAll(!showAll)}
-        className="w-full rounded-2xl border border-pink-300/50 bg-gradient-to-r from-pink-500 to-rose-500 py-4 text-sm font-semibold text-white shadow-lg shadow-pink-500/25 transition-all hover:shadow-pink-500/40 hover:shadow-xl dark:border-pink-700/30 dark:from-pink-600 dark:to-rose-600"
-      >
-        {showAll ? "Show fewer cards" : `Expand to view ${upcomingCards.length} more`}
-      </Button>
+      {/* Missing Cards Section */}
+      {missingCards.length > 0 && (
+        <div className="space-y-3">
+          <h3 className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest">
+            Still Needed ({missingCards.length})
+          </h3>
+          <div className="grid grid-cols-4 gap-2">
+            {missingCards.slice(0, showAll ? missingCards.length : 8).map((slot) => (
+              <div
+                key={`missing-${slot.slot}`}
+                className="aspect-[3/4] rounded-lg bg-gradient-to-br from-gray-200/50 to-gray-300/50 dark:from-gray-700/40 dark:to-gray-800/40 flex items-center justify-center relative overflow-hidden border border-gray-300/30 dark:border-gray-700/30"
+              >
+                <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_1px,rgba(0,0,0,0.08)_1px,rgba(0,0,0,0.08)_2px)] dark:bg-[repeating-linear-gradient(45deg,transparent,transparent_1px,rgba(255,255,255,0.08)_1px,rgba(255,255,255,0.08)_2px)]"></div>
+                <div className="relative text-center text-[10px] text-gray-500/50 dark:text-gray-400/50 font-semibold">
+                  <div>SLOT</div>
+                  <div>{slot.slot.toString().padStart(2, '0')}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {missingCards.length > 8 && (
+            <Button
+              onClick={() => setShowAll(!showAll)}
+              className="w-full rounded-lg bg-pink-500/80 hover:bg-pink-600 dark:bg-pink-600/80 dark:hover:bg-pink-700 text-white text-sm py-2"
+            >
+              {showAll ? "Show less" : `View all ${missingCards.length} missing`}
+            </Button>
+          )}
+        </div>
+      )}
     </section>
   );
 };
