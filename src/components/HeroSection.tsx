@@ -9,8 +9,11 @@ const HeroSection = () => {
   useEffect(() => {
     const phrases = [
       { text: "Score & Predict" },
-      { text: "Collect & Compete" },
+      { text: "Collect & Win" },
       { text: "Win & Celebrate" },
+      { text: "Kheder & Ranem" },
+     { text: "Aya & Us" },
+
     ];
 
     const currentPhrase = phrases[phraseIndex].text;
@@ -48,8 +51,10 @@ const HeroSection = () => {
         <div className="flex items-center justify-center gap-3">
           <span className="text-5xl animate-slow-bounce drop-shadow-lg">⚽</span>
           <h1 className="text-5xl font-extrabold text-gray-900 dark:text-white">
-            Hi Ayoosh!
+            Hi there!
           </h1>
+                    <span className="text-5xl animate-slow-bounce drop-shadow-lg">⚽</span>
+
         </div>
 
         {/* Typewriter Text */}

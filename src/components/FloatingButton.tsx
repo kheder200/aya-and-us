@@ -4,69 +4,153 @@ import floatingButtonIcon from "../assets/floating_botton.png";
 interface ChanceEvent {
   id: number;
   isGoal: boolean;
+  stage: "intro" | "countdown" | "animation" | "result";
+  countdown?: number;
+  result?: "goal" | "miss";
 }
 
 const FloatingButton = () => {
   const [chances, setChances] = useState<ChanceEvent[]>([]);
   const [nextId, setNextId] = useState(0);
-  const [showMessage, setShowMessage] = useState(false);
+  const [isActive, setIsActive] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const handleClick = () => {
+    if (isActive) return;
+
+    setIsActive(true);
     const randomNumber = Math.floor(Math.random() * 100);
     const isGoal = randomNumber % 2 === 0;
-
-    const newChance: ChanceEvent = { id: nextId, isGoal };
-    setChances((prev) => [...prev, newChance]);
+    const id = nextId;
     setNextId((prev) => prev + 1);
 
-    setShowMessage(true);
-    setTimeout(() => setShowMessage(false), 2000);
+    const newChance: ChanceEvent = { id, isGoal, stage: "intro" };
+    setChances((prev) => [...prev, newChance]);
 
     setTimeout(() => {
-      setChances((prev) => prev.filter((c) => c.id !== newChance.id));
-    }, 3000);
+      setChances((prev) =>
+        prev.map((c) => (c.id === id ? { ...c, stage: "countdown", countdown: 3 } : c))
+      );
+    }, 2500);
+
+    let countdown = 3;
+    const countdownInterval = setInterval(() => {
+      countdown--;
+      setChances((prev) =>
+        prev.map((c) =>
+          c.id === id ? { ...c, countdown } : c
+        )
+      );
+
+      if (countdown === 0) {
+        clearInterval(countdownInterval);
+        setTimeout(() => {
+          setChances((prev) =>
+            prev.map((c) =>
+              c.id === id ? { ...c, stage: "animation" } : c
+            )
+          );
+
+          setTimeout(() => {
+            setChances((prev) =>
+              prev.map((c) =>
+                c.id === id
+                  ? { ...c, stage: "result", result: isGoal ? "goal" : "miss" }
+                  : c
+              )
+            );
+
+            setTimeout(() => {
+              setChances((prev) => prev.filter((c) => c.id !== id));
+              setIsActive(false);
+            }, 2000);
+          }, 2500);
+        }, 500);
+      }
+    }, 1000);
   };
 
   return (
     <>
-      {/* Message Toast */}
-      {showMessage && (
-        <div className="fixed bottom-32 right-8 z-50 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 rounded-lg shadow-lg animate-in fade-in duration-300">
-          <p className="font-semibold text-center">Test your chance today! 🍀</p>
-        </div>
-      )}
-
-      {/* Goal and Ball Animation */}
+      {/* Overlay and Sequence */}
       {chances.map((chance) => (
-        <div key={chance.id} className="fixed inset-0 pointer-events-none z-30">
-          {/* Goal Icon at top center */}
-          <div className="fixed top-24 left-1/2 -translate-x-1/2 text-6xl animate-pulse">
-            🥅
-          </div>
+        <div key={chance.id}>
+          {/* Blur Overlay */}
+          {(chance.stage === "intro" || chance.stage === "countdown") && (
+            <div className="fixed inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm z-40 animate-in fade-in duration-500" />
+          )}
 
-          {/* Animated Ball */}
-          {chance.isGoal ? (
-            <div
-              className="fixed text-4xl"
-              style={{
-                left: "50%",
-                bottom: "32px",
-                animation: "ball-to-goal-responsive 2.5s ease-in forwards",
-              }}
-            >
-              ⚽
+          {/* Intro Message - Let's test your chance today */}
+          {chance.stage === "intro" && (
+            <div className="fixed inset-0 flex items-center justify-center z-50 pointer-events-none">
+              <div className="text-center animate-in fade-in duration-500">
+                <p className="text-4xl font-bold text-blue-600 dark:text-blue-400">
+                  Let's test your chance today! 
+                </p>
+              </div>
             </div>
-          ) : (
-            <div
-              className="fixed text-4xl"
-              style={{
-                left: "50%",
-                bottom: "32px",
-                animation: "ball-random-miss 2.5s ease-in forwards",
-              }}
-            >
-              ⚽
+          )}
+
+          {/* Countdown 3 2 1 */}
+          {chance.stage === "countdown" && chance.countdown !== undefined && (
+            <div className="fixed inset-0 flex items-center justify-center z-50 pointer-events-none">
+              <div className="text-center animate-in fade-in duration-300">
+                <p className="text-9xl font-bold text-blue-600 dark:text-blue-400 animate-pulse">
+                  {chance.countdown}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Goal and Ball Animation */}
+          {(chance.stage === "animation" || chance.stage === "result") && (
+            <div className="fixed inset-0 pointer-events-none z-30">
+              {/* Goal Icon at top center */}
+              <div className="fixed top-24 left-1/2 -translate-x-1/2 text-6xl animate-pulse">
+                🥅
+              </div>
+
+              {/* Animated Ball */}
+              {chance.isGoal ? (
+                <div
+                  className="fixed text-4xl"
+                  style={{
+                    left: "50%",
+                    bottom: "32px",
+                    animation: "ball-to-goal-responsive 2.5s ease-in forwards",
+                  }}
+                >
+                  ⚽
+                </div>
+              ) : (
+                <div
+                  className="fixed text-4xl"
+                  style={{
+                    left: "50%",
+                    bottom: "32px",
+                    animation: "ball-random-miss 2.5s ease-in forwards",
+                  }}
+                >
+                  ⚽
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Result Message */}
+          {chance.stage === "result" && (
+            <div className="fixed inset-0 flex items-center justify-center z-50 pointer-events-none">
+              <div className="text-center animate-in fade-in duration-500">
+                {chance.result === "goal" ? (
+                  <p className="text-6xl font-bold text-green-500 dark:text-green-400 drop-shadow-lg">
+                    GOOOAAL! 🎉
+                  </p>
+                ) : (
+                  <p className="text-5xl font-bold text-red-500 dark:text-red-400 drop-shadow-lg">
+                    Sorry, try again! 😅
+                  </p>
+                )}
+              </div>
             </div>
           )}
         </div>
@@ -101,7 +185,10 @@ const FloatingButton = () => {
       <button
         ref={buttonRef}
         onClick={handleClick}
-        className="fixed bottom-8 right-8 z-40 w-16 h-16 transform hover:scale-110 active:scale-95 transition-all duration-300 ease-out flex items-center justify-center"
+        disabled={isActive}
+        className={`fixed bottom-8 right-8 z-40 w-16 h-16 transform transition-all duration-300 ease-out flex items-center justify-center ${
+          isActive ? "opacity-50 cursor-not-allowed" : "hover:scale-110 active:scale-95"
+        }`}
         aria-label="Test your chance"
       >
         <img src={floatingButtonIcon} alt="Test your chance" className="w-full h-full object-contain" />
