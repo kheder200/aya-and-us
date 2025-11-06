@@ -42,7 +42,7 @@ const RecentCollections = () => {
       {/* Album Header with Stats */}
       <div className="space-y-4">
         <div className="flex items-center gap-2">
-          <Trophy className="h-5 w-5 text-pink-500" />
+          <Trophy className="h-5 w-5 text-blue-500" />
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
             Aya&apos;s Album
           </h2>
@@ -55,15 +55,15 @@ const RecentCollections = () => {
           {albumStats.map((stat) => (
             <div
               key={stat.label}
-              className="rounded-xl border border-pink-200/50 bg-pink-50/50 dark:border-pink-800/30 dark:bg-pink-950/30 p-3"
+              className="rounded-xl border border-blue-200/50 bg-blue-50/50 dark:border-blue-800/30 dark:bg-blue-950/30 p-3"
             >
-              <p className="text-xs font-semibold text-pink-600/70 dark:text-pink-400/70 uppercase tracking-wider">
+              <p className="text-xs font-semibold text-blue-600/70 dark:text-blue-400/70 uppercase tracking-wider">
                 {stat.label}
               </p>
-              <p className="mt-1 text-base font-bold text-pink-900 dark:text-pink-100">
+              <p className="mt-1 text-base font-bold text-blue-900 dark:text-blue-100">
                 {stat.value}
               </p>
-              <p className="text-[11px] text-pink-700/60 dark:text-pink-300/60">
+              <p className="text-[11px] text-blue-700/60 dark:text-blue-300/60">
                 {stat.note}
               </p>
             </div>
@@ -76,14 +76,14 @@ const RecentCollections = () => {
         <h3 className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest">
           Your Progress
         </h3>
-        <div className="rounded-2xl bg-gradient-to-br from-white to-pink-50/30 dark:from-gray-900/50 dark:to-pink-950/30 p-4 border border-pink-200/30 dark:border-pink-800/20">
+        <div className="rounded-2xl bg-gradient-to-br from-white to-blue-50/30 dark:from-gray-900/50 dark:to-blue-950/30 p-4 border border-blue-200/30 dark:border-blue-800/20">
           <div className="grid grid-cols-3 gap-4">
             {albumSlots.map((slot) => (
               <div
                 key={slot.slot}
                 className={`relative overflow-hidden rounded-xl transition-all ${
                   slot.owned && slot.card
-                    ? "ring-2 ring-pink-400 dark:ring-pink-500 shadow-lg"
+                    ? "ring-2 ring-blue-400 dark:ring-blue-500 shadow-lg"
                     : ""
                 }`}
               >
@@ -142,7 +142,7 @@ const RecentCollections = () => {
               <>
                 <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white dark:from-gray-900 pointer-events-none"></div>
                 <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <ArrowRight className="h-5 w-5 text-pink-400 dark:text-pink-500 animate-scroll-hint" />
+                  <ArrowRight className="h-5 w-5 text-blue-400 dark:text-blue-500 animate-scroll-hint" />
                 </div>
               </>
             )}
@@ -174,7 +174,7 @@ const RecentCollections = () => {
           {missingCards.length > 8 && (
             <Button
               onClick={() => setShowAll(!showAll)}
-              className="w-full rounded-lg bg-pink-500/80 hover:bg-pink-600 dark:bg-pink-600/80 dark:hover:bg-pink-700 text-white text-sm py-2"
+              className="w-full rounded-lg bg-blue-500/80 hover:bg-blue-600 dark:bg-blue-600/80 dark:hover:bg-blue-700 text-white text-sm py-2"
             >
               {showAll ? "Show less" : `View all ${missingCards.length} missing`}
             </Button>

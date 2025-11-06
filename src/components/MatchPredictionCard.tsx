@@ -68,36 +68,36 @@ const MatchPredictionCard = () => {
   };
 
   return (
-    <div className="rounded-3xl border border-gradient-to-r from-pink-400/30 to-purple-400/30 bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-blue-500/10 p-6 shadow-lg shadow-pink-500/15 dark:from-pink-950/30 dark:via-purple-950/20 dark:to-blue-950/20 dark:shadow-pink-500/10">
+    <div className="rounded-3xl border border-gradient-to-r from-blue-400/30 to-indigo-400/30 bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-cyan-500/10 p-6 shadow-lg shadow-blue-500/15 dark:from-blue-950/30 dark:via-indigo-950/20 dark:to-cyan-950/20 dark:shadow-blue-500/10">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <h2 className="text-xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent dark:from-pink-400 dark:to-purple-400">Today&apos;s Match</h2>
+          <h2 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400">Today&apos;s Match</h2>
           <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
             Lock your scoreline before kickoff.
           </p>
         </div>
-        <div className="flex items-center gap-2 rounded-full border border-pink-400/40 bg-gradient-to-r from-pink-100/50 to-purple-100/50 dark:from-pink-950/40 dark:to-purple-950/40 px-3 py-1 text-sm font-semibold text-pink-700 dark:text-pink-300 shadow-sm backdrop-blur">
+        <div className="flex items-center gap-2 rounded-full border border-blue-400/40 bg-gradient-to-r from-blue-100/50 to-indigo-100/50 dark:from-blue-950/40 dark:to-indigo-950/40 px-3 py-1 text-sm font-semibold text-blue-700 dark:text-blue-300 shadow-sm backdrop-blur">
           <Clock className="h-4 w-4" />
           <span>3h 24m</span>
         </div>
       </div>
 
-      <div className="mt-5 grid grid-cols-3 items-center gap-4 rounded-2xl border border-gradient-to-r from-pink-300/30 to-purple-300/30 bg-gradient-to-b from-white/50 to-pink-50/30 dark:from-gray-800/50 dark:to-pink-950/30 p-4 backdrop-blur-sm">
+      <div className="mt-5 grid grid-cols-3 items-center gap-4 rounded-2xl border border-gradient-to-r from-blue-300/30 to-indigo-300/30 bg-gradient-to-b from-white/50 to-blue-50/30 dark:from-gray-800/50 dark:to-blue-950/30 p-4 backdrop-blur-sm">
         <div className="text-center">
-          <div className="mx-auto mb-2 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-pink-400 to-rose-400 text-2xl shadow-lg shadow-pink-400/40">
+          <div className="mx-auto mb-2 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 text-2xl shadow-lg shadow-blue-400/40">
             ⚽
           </div>
           <p className="text-sm font-bold text-gray-900 dark:text-white">Barcelona</p>
         </div>
         <div className="flex flex-col items-center justify-center gap-1">
-          <Badge className="border-0 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-[11px] uppercase tracking-wide font-semibold shadow-md shadow-purple-400/30">
+          <Badge className="border-0 bg-gradient-to-r from-indigo-500 to-blue-500 text-white text-[11px] uppercase tracking-wide font-semibold shadow-md shadow-indigo-400/30">
             La Liga
           </Badge>
-          <span className="text-3xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent dark:from-purple-400 dark:to-pink-400">VS</span>
+          <span className="text-3xl font-black bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent dark:from-indigo-400 dark:to-blue-400">VS</span>
           <p className="text-[11px] uppercase font-semibold text-gray-600 dark:text-gray-400">Camp Nou</p>
         </div>
         <div className="text-center">
-          <div className="mx-auto mb-2 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-purple-400 text-2xl shadow-lg shadow-blue-400/40">
+          <div className="mx-auto mb-2 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-400 text-2xl shadow-lg shadow-cyan-400/40">
             ⚽
           </div>
           <p className="text-sm font-bold text-gray-900 dark:text-white">Real Madrid</p>
@@ -117,8 +117,8 @@ const MatchPredictionCard = () => {
                   const selectedScore = prediction[teamKey];
                   const isHome = teamKey === "home";
                   return (
-                    <div key={teamKey} className={`rounded-2xl border bg-gradient-to-br p-4 backdrop-blur-sm ${isHome ? "border-pink-300/40 from-pink-100/40 to-rose-100/40 dark:border-pink-700/30 dark:from-pink-950/30 dark:to-rose-950/30" : "border-blue-300/40 from-blue-100/40 to-purple-100/40 dark:border-blue-700/30 dark:from-blue-950/30 dark:to-purple-950/30"}`}>
-                      <p className={`text-sm font-bold mb-3 ${isHome ? "text-pink-900 dark:text-pink-200" : "text-blue-900 dark:text-blue-200"}`}>
+                    <div key={teamKey} className={`rounded-2xl border bg-gradient-to-br p-4 backdrop-blur-sm ${isHome ? "border-blue-300/40 from-blue-100/40 to-cyan-100/40 dark:border-blue-700/30 dark:from-blue-950/30 dark:to-cyan-950/30" : "border-indigo-300/40 from-indigo-100/40 to-purple-100/40 dark:border-indigo-700/30 dark:from-indigo-950/30 dark:to-purple-950/30"}`}>
+                      <p className={`text-sm font-bold mb-3 ${isHome ? "text-blue-900 dark:text-blue-200" : "text-indigo-900 dark:text-indigo-200"}`}>
                         {teamLabel} score
                       </p>
                       <div className="grid grid-cols-3 gap-2">
@@ -134,11 +134,11 @@ const MatchPredictionCard = () => {
                                 "rounded-xl border px-3 py-2 text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2",
                                 isSelected
                                   ? isHome
-                                    ? "border-transparent bg-gradient-to-r from-pink-500 to-rose-400 text-white shadow-lg shadow-pink-400/40"
-                                    : "border-transparent bg-gradient-to-r from-blue-500 to-purple-400 text-white shadow-lg shadow-blue-400/40"
+                                    ? "border-transparent bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg shadow-blue-400/40"
+                                    : "border-transparent bg-gradient-to-r from-indigo-500 to-purple-400 text-white shadow-lg shadow-indigo-400/40"
                                   : isHome
-                                    ? "border-pink-300/50 dark:border-pink-700/30 bg-white/60 dark:bg-gray-900/40 text-gray-900 dark:text-white hover:border-pink-500/70 hover:shadow-md dark:hover:border-pink-500/50 hover:shadow-pink-300/20"
-                                    : "border-blue-300/50 dark:border-blue-700/30 bg-white/60 dark:bg-gray-900/40 text-gray-900 dark:text-white hover:border-blue-500/70 hover:shadow-md dark:hover:border-blue-500/50 hover:shadow-blue-300/20"
+                                    ? "border-blue-300/50 dark:border-blue-700/30 bg-white/60 dark:bg-gray-900/40 text-gray-900 dark:text-white hover:border-blue-500/70 hover:shadow-md dark:hover:border-blue-500/50 hover:shadow-blue-300/20"
+                                    : "border-indigo-300/50 dark:border-indigo-700/30 bg-white/60 dark:bg-gray-900/40 text-gray-900 dark:text-white hover:border-indigo-500/70 hover:shadow-md dark:hover:border-indigo-500/50 hover:shadow-indigo-300/20"
                               )}
                             >
                               {score}
@@ -152,8 +152,8 @@ const MatchPredictionCard = () => {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-purple-300/40 bg-gradient-to-br from-purple-100/40 to-pink-100/40 dark:border-purple-700/30 dark:from-purple-950/30 dark:to-pink-950/30 p-4 backdrop-blur-sm">
-              <p className="text-xs uppercase tracking-widest font-bold text-purple-900 dark:text-purple-200 mb-3">
+            <div className="rounded-2xl border border-indigo-300/40 bg-gradient-to-br from-indigo-100/40 to-blue-100/40 dark:border-indigo-700/30 dark:from-indigo-950/30 dark:to-blue-950/30 p-4 backdrop-blur-sm">
+              <p className="text-xs uppercase tracking-widest font-bold text-indigo-900 dark:text-indigo-200 mb-3">
                 Community picks
               </p>
               <div className="space-y-3">
@@ -178,7 +178,7 @@ const MatchPredictionCard = () => {
           <Button
             onClick={handleSubmit}
             disabled={!canSubmit}
-            className="mt-6 w-full rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 py-5 text-lg font-bold text-white shadow-lg shadow-pink-500/30 transition-all disabled:opacity-40 disabled:hover:shadow-none"
+            className="mt-6 w-full rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 py-5 text-lg font-bold text-white shadow-lg shadow-blue-500/30 transition-all disabled:opacity-40 disabled:hover:shadow-none"
           >
             Lock My Prediction
           </Button>
@@ -202,42 +202,42 @@ const MatchPredictionCard = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-2xl border border-pink-400/40 bg-gradient-to-br from-pink-200/50 to-rose-200/40 dark:border-pink-700/30 dark:from-pink-950/40 dark:to-rose-950/40 p-4 text-center shadow-lg shadow-pink-300/20">
-                <p className="text-xs uppercase font-bold text-pink-900 dark:text-pink-200">
+              <div className="rounded-2xl border border-blue-400/40 bg-gradient-to-br from-blue-200/50 to-cyan-200/40 dark:border-blue-700/30 dark:from-blue-950/40 dark:to-cyan-950/40 p-4 text-center shadow-lg shadow-blue-300/20">
+                <p className="text-xs uppercase font-bold text-blue-900 dark:text-blue-200">
                   Barcelona
                 </p>
-                <p className="text-5xl font-black bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent dark:from-pink-400 dark:to-rose-400 mt-2">
+                <p className="text-5xl font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-cyan-400 mt-2">
                   {lockedPrediction.home}
                 </p>
               </div>
-              <div className="rounded-2xl border border-blue-400/40 bg-gradient-to-br from-blue-200/50 to-purple-200/40 dark:border-blue-700/30 dark:from-blue-950/40 dark:to-purple-950/40 p-4 text-center shadow-lg shadow-blue-300/20">
-                <p className="text-xs uppercase font-bold text-blue-900 dark:text-blue-200">
+              <div className="rounded-2xl border border-indigo-400/40 bg-gradient-to-br from-indigo-200/50 to-purple-200/40 dark:border-indigo-700/30 dark:from-indigo-950/40 dark:to-purple-950/40 p-4 text-center shadow-lg shadow-indigo-300/20">
+                <p className="text-xs uppercase font-bold text-indigo-900 dark:text-indigo-200">
                   Madrid
                 </p>
-                <p className="text-5xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400 mt-2">
+                <p className="text-5xl font-black bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent dark:from-indigo-400 dark:to-purple-400 mt-2">
                   {lockedPrediction.away}
                 </p>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-purple-300/40 bg-gradient-to-br from-purple-100/40 to-pink-100/40 dark:border-purple-700/30 dark:from-purple-950/30 dark:to-pink-950/30 p-4 backdrop-blur-sm">
-              <p className="text-xs uppercase tracking-widest font-bold text-purple-900 dark:text-purple-200 mb-2">
+            <div className="rounded-2xl border border-indigo-300/40 bg-gradient-to-br from-indigo-100/40 to-blue-100/40 dark:border-indigo-700/30 dark:from-indigo-950/30 dark:to-blue-950/30 p-4 backdrop-blur-sm">
+              <p className="text-xs uppercase tracking-widest font-bold text-indigo-900 dark:text-indigo-200 mb-2">
                 Aya&apos;s insight
               </p>
               <p className="text-sm text-gray-900 dark:text-gray-100 leading-relaxed">
                 {accuracyCopy}
               </p>
               <div className="mt-4 grid grid-cols-3 gap-2">
-                <div className="rounded-xl border border-purple-300/40 bg-white/60 dark:bg-gray-900/40 px-2 py-3 text-center">
-                  <p className="font-bold text-lg bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent dark:from-purple-400 dark:to-pink-400">82%</p>
+                <div className="rounded-xl border border-indigo-300/40 bg-white/60 dark:bg-gray-900/40 px-2 py-3 text-center">
+                  <p className="font-bold text-lg bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent dark:from-indigo-400 dark:to-blue-400">82%</p>
                   <p className="text-[11px] text-gray-700 dark:text-gray-300 font-semibold">Overall</p>
                 </div>
-                <div className="rounded-xl border border-pink-300/40 bg-white/60 dark:bg-gray-900/40 px-2 py-3 text-center">
-                  <p className="font-bold text-lg bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent dark:from-pink-400 dark:to-rose-400">68%</p>
+                <div className="rounded-xl border border-blue-300/40 bg-white/60 dark:bg-gray-900/40 px-2 py-3 text-center">
+                  <p className="font-bold text-lg bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-cyan-400">68%</p>
                   <p className="text-[11px] text-gray-700 dark:text-gray-300 font-semibold">Home wins</p>
                 </div>
-                <div className="rounded-xl border border-blue-300/40 bg-white/60 dark:bg-gray-900/40 px-2 py-3 text-center">
-                  <p className="font-bold text-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400">14%</p>
+                <div className="rounded-xl border border-cyan-300/40 bg-white/60 dark:bg-gray-900/40 px-2 py-3 text-center">
+                  <p className="font-bold text-lg bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent dark:from-cyan-400 dark:to-blue-400">14%</p>
                   <p className="text-[11px] text-gray-700 dark:text-gray-300 font-semibold">Late swings</p>
                 </div>
               </div>
@@ -246,7 +246,7 @@ const MatchPredictionCard = () => {
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
               <Button
                 onClick={handleEdit}
-                className="w-full gap-2 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold shadow-lg shadow-purple-400/30 transition-all"
+                className="w-full gap-2 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-bold shadow-lg shadow-blue-400/30 transition-all"
               >
                 <Edit3 className="h-4 w-4" />
                 Edit prediction

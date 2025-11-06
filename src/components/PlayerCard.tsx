@@ -14,26 +14,26 @@ interface PlayerCardProps {
 const rarityCopy: Record<PlayerCardProps["rarity"], { label: string; gradient: string; border: string; badge: string; accent: string; icon: ReactNode }> = {
   common: {
     label: "Common",
-    gradient: "from-pink-400/40 via-rose-300/25 to-pink-500/35 dark:from-pink-500/30 dark:via-rose-400/20 dark:to-pink-600/30",
-    border: "border-pink-400/50 dark:border-pink-500/40",
-    badge: "border-pink-400/50 bg-pink-50/80 text-pink-800 dark:text-pink-100 dark:bg-pink-900/60",
-    accent: "text-pink-600 dark:text-pink-300",
+    gradient: "from-blue-400/40 via-cyan-300/25 to-blue-500/35 dark:from-blue-500/30 dark:via-cyan-400/20 dark:to-blue-600/30",
+    border: "border-blue-400/50 dark:border-blue-500/40",
+    badge: "border-blue-400/50 bg-blue-50/80 text-blue-800 dark:text-blue-100 dark:bg-blue-900/60",
+    accent: "text-blue-600 dark:text-blue-300",
     icon: <Star className="h-3.5 w-3.5" />,
   },
   rare: {
     label: "Rare",
-    gradient: "from-pink-500/45 via-purple-400/30 to-rose-500/35 dark:from-pink-600/35 dark:via-purple-500/25 dark:to-rose-600/30",
-    border: "border-pink-500/55 dark:border-pink-600/45",
-    badge: "border-pink-500/50 bg-pink-100/70 text-pink-900 dark:text-pink-100 dark:bg-pink-900/50",
-    accent: "text-pink-700 dark:text-pink-200",
+    gradient: "from-blue-500/45 via-indigo-400/30 to-cyan-500/35 dark:from-blue-600/35 dark:via-indigo-500/25 dark:to-cyan-600/30",
+    border: "border-blue-500/55 dark:border-blue-600/45",
+    badge: "border-blue-500/50 bg-blue-100/70 text-blue-900 dark:text-blue-100 dark:bg-blue-900/50",
+    accent: "text-blue-700 dark:text-blue-200",
     icon: <Trophy className="h-3.5 w-3.5" />,
   },
   legendary: {
     label: "Legendary",
-    gradient: "from-pink-600/50 via-rose-500/35 to-purple-500/40 dark:from-pink-500/40 dark:via-rose-400/30 dark:to-purple-400/35",
-    border: "border-pink-600/60 dark:border-pink-500/50",
-    badge: "border-pink-600/60 bg-pink-100/80 text-pink-900 dark:text-pink-100 dark:bg-pink-900/60",
-    accent: "text-pink-800 dark:text-pink-200",
+    gradient: "from-blue-600/50 via-indigo-500/35 to-cyan-500/40 dark:from-blue-500/40 dark:via-indigo-400/30 dark:to-cyan-400/35",
+    border: "border-blue-600/60 dark:border-blue-500/50",
+    badge: "border-blue-600/60 bg-blue-100/80 text-blue-900 dark:text-blue-100 dark:bg-blue-900/60",
+    accent: "text-blue-800 dark:text-blue-200",
     icon: <Star className="h-3.5 w-3.5 fill-current" />,
   },
 };
@@ -49,13 +49,13 @@ const PlayerCard = ({
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-2xl border bg-white/95 p-3 backdrop-blur-sm shadow-lg shadow-pink-500/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-pink-500/20 dark:bg-gray-900/95 dark:shadow-pink-500/5",
+        "group relative overflow-hidden rounded-2xl border bg-white/95 p-3 backdrop-blur-sm shadow-lg shadow-blue-500/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/20 dark:bg-gray-900/95 dark:shadow-blue-500/5",
         rarityCopy[rarity].gradient,
         rarityCopy[rarity].border,
         className
       )}
     >
-      <div className="absolute left-3 top-3 rounded-full border border-pink-300/40 bg-white/90 px-2 py-1 text-[10px] font-bold text-pink-800 backdrop-blur-sm dark:border-pink-700/30 dark:bg-pink-950/80 dark:text-pink-200 sm:left-4 sm:px-3 sm:text-[11px]">
+      <div className="absolute left-3 top-3 rounded-full border border-blue-300/40 bg-white/90 px-2 py-1 text-[10px] font-bold text-blue-800 backdrop-blur-sm dark:border-blue-700/30 dark:bg-blue-950/80 dark:text-blue-200 sm:left-4 sm:px-3 sm:text-[11px]">
         {playerNumber.toString().padStart(2, "0")}
       </div>
       <div
@@ -69,7 +69,7 @@ const PlayerCard = ({
       </div>
 
       <div className="mt-6 sm:mt-8">
-        <div className="relative mx-auto flex aspect-[3/4] w-20 items-center justify-center overflow-hidden rounded-xl border border-pink-200/30 bg-white/80 shadow-md shadow-pink-500/10 transition-transform duration-300 group-hover:scale-[1.05] dark:border-pink-800/20 dark:bg-gray-800/80 dark:shadow-pink-500/5 sm:w-24 lg:w-28">
+        <div className="relative mx-auto flex aspect-[3/4] w-20 items-center justify-center overflow-hidden rounded-xl border border-blue-200/30 bg-white/80 shadow-md shadow-blue-500/10 transition-transform duration-300 group-hover:scale-[1.05] dark:border-blue-800/20 dark:bg-gray-800/80 dark:shadow-blue-500/5 sm:w-24 lg:w-28">
           {imageUrl ? (
             <img
               src={imageUrl}
@@ -79,7 +79,7 @@ const PlayerCard = ({
           ) : (
             <span className="text-4xl sm:text-5xl">{emoji}</span>
           )}
-          <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
         </div>
       </div>
 
