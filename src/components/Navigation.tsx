@@ -6,7 +6,7 @@ const Navigation = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-sm bg-white/40 dark:bg-gray-950/40 border-b border-blue-200/30 dark:border-blue-900/30">
+    <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/60 dark:bg-gray-950/70 border-b border-blue-300/50 dark:border-blue-800/50 shadow-lg shadow-blue-500/10 dark:shadow-blue-900/20">
       <div className="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <span className="text-2xl">🤾‍♀️</span>

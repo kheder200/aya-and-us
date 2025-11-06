@@ -31,43 +31,45 @@ const FloatingButton = () => {
       setChances((prev) =>
         prev.map((c) => (c.id === id ? { ...c, stage: "countdown", countdown: 3 } : c))
       );
-    }, 2500);
 
-    let countdown = 3;
-    const countdownInterval = setInterval(() => {
-      countdown--;
-      setChances((prev) =>
-        prev.map((c) =>
-          c.id === id ? { ...c, countdown } : c
-        )
-      );
+      const countdownSequence = [3, 2, 1, 0];
+      let sequenceIndex = 1;
 
-      if (countdown === 0) {
-        clearInterval(countdownInterval);
-        setTimeout(() => {
+      const countdownInterval = setInterval(() => {
+        if (sequenceIndex < countdownSequence.length) {
           setChances((prev) =>
             prev.map((c) =>
-              c.id === id ? { ...c, stage: "animation" } : c
+              c.id === id ? { ...c, countdown: countdownSequence[sequenceIndex] } : c
             )
           );
-
+          sequenceIndex++;
+        } else {
+          clearInterval(countdownInterval);
           setTimeout(() => {
             setChances((prev) =>
               prev.map((c) =>
-                c.id === id
-                  ? { ...c, stage: "result", result: isGoal ? "goal" : "miss" }
-                  : c
+                c.id === id ? { ...c, stage: "animation" } : c
               )
             );
 
             setTimeout(() => {
-              setChances((prev) => prev.filter((c) => c.id !== id));
-              setIsActive(false);
-            }, 2000);
-          }, 2500);
-        }, 500);
-      }
-    }, 1000);
+              setChances((prev) =>
+                prev.map((c) =>
+                  c.id === id
+                    ? { ...c, stage: "result", result: isGoal ? "goal" : "miss" }
+                    : c
+                )
+              );
+
+              setTimeout(() => {
+                setChances((prev) => prev.filter((c) => c.id !== id));
+                setIsActive(false);
+              }, 2500);
+            }, 2500);
+          }, 500);
+        }
+      }, 1000);
+    }, 2500);
   };
 
   return (
@@ -75,10 +77,8 @@ const FloatingButton = () => {
       {/* Overlay and Sequence */}
       {chances.map((chance) => (
         <div key={chance.id}>
-          {/* Blur Overlay */}
-          {(chance.stage === "intro" || chance.stage === "countdown") && (
-            <div className="fixed inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm z-40 animate-in fade-in duration-500" />
-          )}
+          {/* Blur Overlay - Show throughout entire sequence */}
+          <div className="fixed inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm z-40 animate-in fade-in duration-500" />
 
           {/* Intro Message - Let's test your chance today */}
           {chance.stage === "intro" && (
@@ -91,11 +91,11 @@ const FloatingButton = () => {
             </div>
           )}
 
-          {/* Countdown 3 2 1 */}
+          {/* Countdown 3 2 1 0 */}
           {chance.stage === "countdown" && chance.countdown !== undefined && (
             <div className="fixed inset-0 flex items-center justify-center z-50 pointer-events-none">
-              <div className="text-center animate-in fade-in duration-300">
-                <p className="text-9xl font-bold text-blue-600 dark:text-blue-400 animate-pulse">
+              <div className="text-center" style={{ animation: "countdown-pop 0.6s ease-out" }}>
+                <p className="text-[200px] leading-none font-black text-blue-600 dark:text-blue-400 drop-shadow-xl">
                   {chance.countdown}
                 </p>
               </div>
@@ -104,7 +104,7 @@ const FloatingButton = () => {
 
           {/* Goal and Ball Animation */}
           {(chance.stage === "animation" || chance.stage === "result") && (
-            <div className="fixed inset-0 pointer-events-none z-30">
+            <div className="fixed inset-0 pointer-events-none z-50">
               {/* Goal Icon at top center */}
               <div className="fixed top-24 left-1/2 -translate-x-1/2 text-6xl animate-pulse">
                 🥅
@@ -117,7 +117,7 @@ const FloatingButton = () => {
                   style={{
                     left: "50%",
                     bottom: "32px",
-                    animation: "ball-to-goal-responsive 2.5s ease-in forwards",
+                    animation: "ball-to-goal 2.5s ease-in forwards",
                   }}
                 >
                   ⚽
@@ -128,7 +128,7 @@ const FloatingButton = () => {
                   style={{
                     left: "50%",
                     bottom: "32px",
-                    animation: "ball-random-miss 2.5s ease-in forwards",
+                    animation: "ball-near-miss 2.5s ease-in forwards",
                   }}
                 >
                   ⚽
@@ -157,26 +157,60 @@ const FloatingButton = () => {
       ))}
 
       <style>{`
-        @keyframes ball-random-miss {
+        @keyframes ball-to-goal {
           0% {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-          }
-          25% {
-            transform: translateX(-50%) translateY(-100px);
+            transform: translate(-50%, 0);
             opacity: 1;
           }
           50% {
-            transform: translateX(-150px) translateY(-200px);
+            transform: translate(-50%, -150px);
             opacity: 1;
           }
-          75% {
-            transform: translateX(50px) translateY(-150px);
+          85% {
+            transform: translate(-50%, -424px);
             opacity: 1;
           }
           100% {
-            transform: translateX(100px) translateY(-300px);
+            transform: translate(-50%, -424px);
             opacity: 0;
+          }
+        }
+
+        @keyframes ball-near-miss {
+          0% {
+            transform: translate(-50%, 0);
+            opacity: 1;
+          }
+          40% {
+            transform: translate(-50%, -120px);
+            opacity: 1;
+          }
+          60% {
+            transform: translate(-45%, -380px);
+            opacity: 1;
+          }
+          75% {
+            transform: translate(-80%, -350px);
+            opacity: 1;
+          }
+          100% {
+            transform: translate(-150%, -400px);
+            opacity: 0;
+          }
+        }
+
+        @keyframes countdown-pop {
+          0% {
+            transform: scale(0.5);
+            opacity: 0;
+          }
+          50% {
+            transform: scale(1.1);
+            opacity: 1;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
           }
         }
       `}</style>

@@ -180,7 +180,7 @@ const MatchPredictionCard = () => {
             disabled={!canSubmit}
             className="mt-6 w-full rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 py-5 text-lg font-bold text-white shadow-lg shadow-blue-500/30 transition-all disabled:opacity-40 disabled:hover:shadow-none"
           >
-            Lock My Prediction
+            Predict Now 
           </Button>
         </>
       ) : (
