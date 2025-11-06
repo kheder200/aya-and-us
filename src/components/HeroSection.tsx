@@ -77,7 +77,7 @@ const HeroSection = () => {
         <div className="flex items-center justify-center gap-3">
           <span className="text-4xl ball-rotate drop-shadow-lg">⚽</span>
           <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white">
-            Hi Ayoosh!
+            Hi There!
           </h1>
           <span className="text-4xl ball-rotate drop-shadow-lg">⚽</span>
         </div>
