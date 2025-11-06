@@ -159,4 +159,13 @@ All colors MUST be HSL.
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  .animate-scroll-hint {
+    animation: scroll-hint 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-hint {
+    0%, 100% { transform: translateX(0); opacity: 0.6; }
+    50% { transform: translateX(4px); opacity: 1; }
+  }
 }

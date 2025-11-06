@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronRight, Sparkles, Trophy, Star, Lock } from "lucide-react";
+import { ChevronRight, Sparkles, Trophy, Star, Lock, ArrowRight } from "lucide-react";
 import PlayerCard from "./PlayerCard";
 import playerCard1 from "@/assets/player-card-1.png";
 import playerCard2 from "@/assets/player-card-2.png";
@@ -76,14 +76,14 @@ const RecentCollections = () => {
         <h3 className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest">
           Your Progress
         </h3>
-        <div className="rounded-2xl bg-gradient-to-br from-white to-pink-50/30 dark:from-gray-900/50 dark:to-pink-950/30 p-3 border border-pink-200/30 dark:border-pink-800/20">
-          <div className="grid grid-cols-6 gap-2">
+        <div className="rounded-2xl bg-gradient-to-br from-white to-pink-50/30 dark:from-gray-900/50 dark:to-pink-950/30 p-4 border border-pink-200/30 dark:border-pink-800/20">
+          <div className="grid grid-cols-3 gap-4">
             {albumSlots.map((slot) => (
               <div
                 key={slot.slot}
-                className={`relative overflow-hidden rounded-lg transition-all ${
+                className={`relative overflow-hidden rounded-xl transition-all ${
                   slot.owned && slot.card
-                    ? "ring-2 ring-pink-400 dark:ring-pink-500"
+                    ? "ring-2 ring-pink-400 dark:ring-pink-500 shadow-lg"
                     : ""
                 }`}
               >
@@ -99,12 +99,12 @@ const RecentCollections = () => {
                     />
                   </div>
                 ) : (
-                  <div className="aspect-[3/4] bg-gradient-to-br from-gray-200/40 to-gray-300/40 dark:from-gray-700/30 dark:to-gray-800/30 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_1px,rgba(0,0,0,0.05)_1px,rgba(0,0,0,0.05)_2px)] dark:bg-[repeating-linear-gradient(45deg,transparent,transparent_1px,rgba(255,255,255,0.05)_1px,rgba(255,255,255,0.05)_2px)]"></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center text-[9px] text-gray-500/70 dark:text-gray-400/70 font-bold leading-tight">
-                        <div>SLOT</div>
-                        <div>{slot.slot.toString().padStart(2, '0')}</div>
+                  <div className="aspect-[3/4] bg-gradient-to-br from-gray-200/50 to-gray-300/50 dark:from-gray-700/40 dark:to-gray-800/40 relative overflow-hidden border border-gray-300/40 dark:border-gray-700/40">
+                    <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_1px,rgba(0,0,0,0.06)_1px,rgba(0,0,0,0.06)_2px)] dark:bg-[repeating-linear-gradient(45deg,transparent,transparent_1px,rgba(255,255,255,0.06)_1px,rgba(255,255,255,0.06)_2px)]"></div>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <div className="text-center text-gray-600/70 dark:text-gray-400/70 font-bold space-y-1">
+                        <div className="text-[8px] font-semibold tracking-wider">SLOT</div>
+                        <div className="text-base font-bold">{slot.slot.toString().padStart(2, '0')}</div>
                       </div>
                     </div>
                   </div>
@@ -139,7 +139,12 @@ const RecentCollections = () => {
               </div>
             </div>
             {ownedCards.length > 3 && (
-              <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white dark:from-gray-900 pointer-events-none"></div>
+              <>
+                <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white dark:from-gray-900 pointer-events-none"></div>
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <ArrowRight className="h-5 w-5 text-pink-400 dark:text-pink-500 animate-scroll-hint" />
+                </div>
+              </>
             )}
           </div>
         </div>
