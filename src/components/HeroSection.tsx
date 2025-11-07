@@ -127,12 +127,12 @@ const HeroSection = () => {
       </div>
 
       {/* Middle Section - Animated Collectible Cards */}
-      <div className="relative z-10 w-full max-w-4xl flex items-center justify-center mt-0 md:mt-1 md:flex-grow fade-in-up" style={{ animationDelay: '0.2s', height: "auto" }}>
+      <div className="relative z-10 w-full max-w-4xl flex items-center justify-center mt-6 md:mt-8 md:flex-grow fade-in-up" style={{ animationDelay: '0.2s', height: "auto" }}>
         <AnimatedCollectibleCards />
       </div>
 
       {/* Bottom Section - Get Started Button */}
-      <div className="relative z-10 mt-4 md:mt-auto mb-2 md:mb-12 fade-in-up" style={{ animationDelay: '0.4s' }}>
+      <div className="relative z-10 mt-16 md:mt-auto mb-6 md:mb-12 fade-in-up" style={{ animationDelay: '0.4s', paddingTop: "1.5rem" }}>
         <button
           onClick={handleGetStarted}
           className="relative px-8 py-3 md:px-10 md:py-4 font-semibold text-white rounded-full shadow-lg hover:shadow-2xl active:scale-95 transition-all duration-300 transform hover:scale-105 group overflow-hidden"
@@ -141,7 +141,7 @@ const HeroSection = () => {
           }}
         >
           <span className="relative z-10 flex items-center gap-2">
-            Get Started
+            Start
             <span className="inline-block transition-transform group-hover:translate-y-1">↓</span>
           </span>
           <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
