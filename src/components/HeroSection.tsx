@@ -44,7 +44,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full px-4 md:px-6 flex flex-col items-center justify-start overflow-hidden py-8 md:py-12">
+    <div className="relative w-full px-4 md:px-6 flex flex-col items-center justify-start overflow-hidden py-4 md:py-12" style={{ minHeight: "100vh" }}>
       <style>{`
         @keyframes pulse-glow {
           0%, 100% {
@@ -72,6 +72,22 @@ const HeroSection = () => {
             transform: translateY(0);
           }
         }
+        @keyframes floating-arrow {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-12px);
+          }
+        }
+        @keyframes arrow-glow {
+          0%, 100% {
+            box-shadow: 0 0 20px rgba(241, 12, 245, 0.4), 0 0 40px rgba(241, 12, 245, 0.2);
+          }
+          50% {
+            box-shadow: 0 0 30px rgba(241, 12, 245, 0.7), 0 0 60px rgba(241, 12, 245, 0.3);
+          }
+        }
         .btn-pulse {
           animation: pulse-glow 2s ease-in-out infinite;
         }
@@ -81,6 +97,9 @@ const HeroSection = () => {
         }
         .fade-in-up {
           animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .floating-arrow {
+          animation: floating-arrow 2s ease-in-out infinite, arrow-glow 2s ease-in-out infinite;
         }
       `}</style>
 
@@ -108,17 +127,24 @@ const HeroSection = () => {
       </div>
 
       {/* Middle Section - Animated Collectible Cards */}
-      <div className="relative z-10 w-full max-w-4xl flex items-center justify-center mt-0 md:mt-1 flex-grow fade-in-up" style={{ animationDelay: '0.2s' }}>
+      <div className="relative z-10 w-full max-w-4xl flex items-center justify-center mt-0 md:mt-1 md:flex-grow fade-in-up" style={{ animationDelay: '0.2s', height: "auto" }}>
         <AnimatedCollectibleCards />
       </div>
 
       {/* Bottom Section - Get Started Button */}
-      <div className="relative z-10 mt-auto mb-8 md:mb-12 fade-in-up" style={{ animationDelay: '0.4s' }}>
+      <div className="relative z-10 mt-4 md:mt-auto mb-2 md:mb-12 fade-in-up" style={{ animationDelay: '0.4s' }}>
         <button
           onClick={handleGetStarted}
-          className="px-6 py-2.5 md:px-8 md:py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-sm md:text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 btn-pulse"
+          className="relative px-8 py-3 md:px-10 md:py-4 font-semibold text-white rounded-full shadow-lg hover:shadow-2xl active:scale-95 transition-all duration-300 transform hover:scale-105 group overflow-hidden"
+          style={{
+            background: "linear-gradient(135deg, #3b82f6 0%, #6366f1 100%)",
+          }}
         >
-          Get Started
+          <span className="relative z-10 flex items-center gap-2">
+            Get Started
+            <span className="inline-block transition-transform group-hover:translate-y-1">↓</span>
+          </span>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </button>
       </div>
     </div>
