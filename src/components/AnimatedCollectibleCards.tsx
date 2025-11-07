@@ -136,7 +136,7 @@ const AnimatedCollectibleCards = () => {
       <div className="relative w-full h-full flex items-center justify-center pointer-events-none" style={{ perspective: "2500px" }}>
         {/* 3D Book Container */}
         <div
-          className="relative flex scale-[0.5] md:scale-[0.65]"
+          className="relative flex scale-[0.35] md:scale-[0.65]"
           style={{
             transformStyle: "preserve-3d",
             animation: "float 4s ease-in-out infinite",

@@ -44,7 +44,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full px-4 md:px-6 flex flex-col items-center justify-center overflow-hidden py-8 md:py-12">
+    <div className="relative min-h-screen w-full px-4 md:px-6 flex flex-col items-center justify-start overflow-hidden py-8 md:py-12">
       <style>{`
         @keyframes pulse-glow {
           0%, 100% {
@@ -88,19 +88,19 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 via-transparent to-indigo-50/50 dark:from-blue-950/20 dark:via-transparent dark:to-indigo-950/20 pointer-events-none" />
 
       {/* Top Section - Greeting and Typewriter */}
-      <div className="relative z-10 text-center space-y-3 md:space-y-4 mb-6 md:mb-8 fade-in-up">
+      <div className="relative z-10 text-center space-y-2 md:space-y-4 pt-4 md:pt-8 fade-in-up">
         {/* Greeting */}
         <div className="flex items-center justify-center gap-2 md:gap-3">
-          <span className="text-2xl md:text-4xl ball-rotate drop-shadow-lg">⚽</span>
-          <h1 className="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white">
+          <span className="text-xl md:text-4xl ball-rotate drop-shadow-lg">⚽</span>
+          <h1 className="text-xl md:text-4xl font-extrabold text-gray-900 dark:text-white">
             Hi There!
           </h1>
-          <span className="text-2xl md:text-4xl ball-rotate drop-shadow-lg">⚽</span>
+          <span className="text-xl md:text-4xl ball-rotate drop-shadow-lg">⚽</span>
         </div>
 
         {/* Typewriter Text */}
         <div className="typewriter-text flex justify-center px-4">
-          <h2 className="text-xl md:text-3xl font-bold text-blue-600 dark:text-blue-400 transition-all duration-300 min-h-[2rem] md:min-h-[2.5rem] flex items-center justify-center">
+          <h2 className="text-lg md:text-3xl font-bold text-blue-600 dark:text-blue-400 transition-all duration-300 min-h-[1.5rem] md:min-h-[2.5rem] flex items-center justify-center">
             {displayText}
             <span className="animate-pulse ml-1">|</span>
           </h2>
@@ -108,12 +108,12 @@ const HeroSection = () => {
       </div>
 
       {/* Middle Section - Animated Collectible Cards */}
-      <div className="relative z-10 w-full max-w-4xl flex items-center justify-center flex-1 my-4 md:my-8 fade-in-up" style={{ animationDelay: '0.2s' }}>
+      <div className="relative z-10 w-full max-w-4xl flex items-center justify-center mt-6 mb-6 md:my-8 fade-in-up" style={{ animationDelay: '0.2s' }}>
         <AnimatedCollectibleCards />
       </div>
 
       {/* Bottom Section - Get Started Button */}
-      <div className="relative z-10 mt-6 md:mt-8 mb-8 md:mb-12 fade-in-up" style={{ animationDelay: '0.4s' }}>
+      <div className="relative z-10 mt-6 md:mt-8 mb-6 md:mb-12 fade-in-up" style={{ animationDelay: '0.4s' }}>
         <button
           onClick={handleGetStarted}
           className="px-6 py-2.5 md:px-8 md:py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-sm md:text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 btn-pulse"
