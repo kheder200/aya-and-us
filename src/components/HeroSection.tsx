@@ -44,7 +44,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="relative h-screen w-full px-4 flex flex-col items-center justify-between overflow-hidden py-16">
+    <div className="relative min-h-screen w-full px-4 md:px-6 flex flex-col items-center justify-center overflow-hidden py-8 md:py-12">
       <style>{`
         @keyframes pulse-glow {
           0%, 100% {
@@ -62,6 +62,16 @@ const HeroSection = () => {
             transform: rotate(360deg);
           }
         }
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
         .btn-pulse {
           animation: pulse-glow 2s ease-in-out infinite;
         }
@@ -69,22 +79,28 @@ const HeroSection = () => {
           animation: rotate-continuous 2s linear infinite;
           display: inline-block;
         }
+        .fade-in-up {
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
       `}</style>
 
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 via-transparent to-indigo-50/50 dark:from-blue-950/20 dark:via-transparent dark:to-indigo-950/20 pointer-events-none" />
+
       {/* Top Section - Greeting and Typewriter */}
-      <div className="relative z-10 text-center space-y-4">
+      <div className="relative z-10 text-center space-y-3 md:space-y-4 mb-6 md:mb-8 fade-in-up">
         {/* Greeting */}
-        <div className="flex items-center justify-center gap-3">
-          <span className="text-4xl ball-rotate drop-shadow-lg">⚽</span>
-          <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white">
+        <div className="flex items-center justify-center gap-2 md:gap-3">
+          <span className="text-2xl md:text-4xl ball-rotate drop-shadow-lg">⚽</span>
+          <h1 className="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white">
             Hi There!
           </h1>
-          <span className="text-4xl ball-rotate drop-shadow-lg">⚽</span>
+          <span className="text-2xl md:text-4xl ball-rotate drop-shadow-lg">⚽</span>
         </div>
 
         {/* Typewriter Text */}
-        <div className="typewriter-text flex justify-center">
-          <h2 className="text-3xl font-bold text-blue-600 dark:text-blue-400 transition-all duration-300 min-h-[2.5rem] flex items-center">
+        <div className="typewriter-text flex justify-center px-4">
+          <h2 className="text-xl md:text-3xl font-bold text-blue-600 dark:text-blue-400 transition-all duration-300 min-h-[2rem] md:min-h-[2.5rem] flex items-center justify-center">
             {displayText}
             <span className="animate-pulse ml-1">|</span>
           </h2>
@@ -92,15 +108,15 @@ const HeroSection = () => {
       </div>
 
       {/* Middle Section - Animated Collectible Cards */}
-      <div className="relative z-10 flex-1 w-full max-w-4xl flex items-center justify-center">
+      <div className="relative z-10 w-full max-w-4xl flex items-center justify-center flex-1 my-4 md:my-8 fade-in-up" style={{ animationDelay: '0.2s' }}>
         <AnimatedCollectibleCards />
       </div>
 
       {/* Bottom Section - Get Started Button */}
-      <div className="relative z-10 pb-16">
+      <div className="relative z-10 mt-6 md:mt-8 mb-8 md:mb-12 fade-in-up" style={{ animationDelay: '0.4s' }}>
         <button
           onClick={handleGetStarted}
-          className="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 btn-pulse"
+          className="px-6 py-2.5 md:px-8 md:py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-sm md:text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 btn-pulse"
         >
           Get Started
         </button>
