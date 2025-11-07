@@ -108,12 +108,12 @@ const HeroSection = () => {
       </div>
 
       {/* Middle Section - Animated Collectible Cards */}
-      <div className="relative z-10 w-full max-w-4xl flex items-center justify-center mt-6 mb-6 md:my-8 fade-in-up" style={{ animationDelay: '0.2s' }}>
+      <div className="relative z-10 w-full max-w-4xl flex items-center justify-center mt-0 md:mt-1 flex-grow fade-in-up" style={{ animationDelay: '0.2s' }}>
         <AnimatedCollectibleCards />
       </div>
 
       {/* Bottom Section - Get Started Button */}
-      <div className="relative z-10 mt-6 md:mt-8 mb-6 md:mb-12 fade-in-up" style={{ animationDelay: '0.4s' }}>
+      <div className="relative z-10 mt-auto mb-8 md:mb-12 fade-in-up" style={{ animationDelay: '0.4s' }}>
         <button
           onClick={handleGetStarted}
           className="px-6 py-2.5 md:px-8 md:py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-sm md:text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 btn-pulse"

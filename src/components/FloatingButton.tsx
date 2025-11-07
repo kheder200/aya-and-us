@@ -106,7 +106,7 @@ const FloatingButton = () => {
           {(chance.stage === "animation" || chance.stage === "result") && (
             <div className="fixed inset-0 pointer-events-none z-50">
               {/* Goal Icon at top center */}
-              <div className="fixed top-24 left-1/2 -translate-x-1/2 text-6xl animate-pulse">
+              <div className="fixed top-[10vh] left-1/2 -translate-x-1/2 text-6xl md:text-7xl animate-pulse">
                 🥅
               </div>
 
@@ -115,9 +115,8 @@ const FloatingButton = () => {
                 <div
                   className="fixed text-4xl"
                   style={{
-                    left: "50%",
-                    bottom: "32px",
                     animation: "ball-to-goal 2.5s ease-in forwards",
+                    transform: "translate(-50%, 0)",
                   }}
                 >
                   ⚽
@@ -126,9 +125,8 @@ const FloatingButton = () => {
                 <div
                   className="fixed text-4xl"
                   style={{
-                    left: "50%",
-                    bottom: "32px",
                     animation: "ball-near-miss 2.5s ease-in forwards",
+                    transform: "translate(-50%, 0)",
                   }}
                 >
                   ⚽
@@ -159,42 +157,51 @@ const FloatingButton = () => {
       <style>{`
         @keyframes ball-to-goal {
           0% {
-            transform: translate(-50%, 0);
+            left: calc(100vw - 32px);
+            bottom: 32px;
             opacity: 1;
           }
-          50% {
-            transform: translate(-50%, -150px);
+          30% {
+            left: 50%;
+            bottom: 40%;
             opacity: 1;
           }
-          85% {
-            transform: translate(-50%, -424px);
+          70% {
+            left: 50%;
+            bottom: 65%;
             opacity: 1;
           }
           100% {
-            transform: translate(-50%, -424px);
+            left: 50%;
+            bottom: calc(100vh - 96px);
             opacity: 0;
           }
         }
 
         @keyframes ball-near-miss {
           0% {
-            transform: translate(-50%, 0);
+            left: calc(100vw - 32px);
+            bottom: 32px;
             opacity: 1;
           }
-          40% {
-            transform: translate(-50%, -120px);
+          25% {
+            left: 50%;
+            bottom: 35%;
             opacity: 1;
           }
           60% {
-            transform: translate(-45%, -380px);
+            left: 45%;
+            bottom: 60%;
             opacity: 1;
           }
-          75% {
-            transform: translate(-80%, -350px);
+          80% {
+            left: 25%;
+            bottom: 55%;
             opacity: 1;
           }
           100% {
-            transform: translate(-150%, -400px);
+            left: 10%;
+            bottom: 70%;
             opacity: 0;
           }
         }

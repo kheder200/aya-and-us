@@ -160,7 +160,7 @@ const AnimatedCollectibleCards = () => {
               {/* Left Page Title */}
               <div className="text-center mb-2">
                 <h3 className="text-xs md:text-sm font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                  Left Page
+                  1
                 </h3>
               </div>
 
@@ -218,11 +218,11 @@ const AnimatedCollectibleCards = () => {
             }}
           >
             {/* Front of right page - shows content when open */}
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-50/95 to-indigo-50/95 dark:from-blue-950/90 dark:to-indigo-950/90 rounded-r-3xl shadow-2xl backdrop-blur-sm border-2 border-blue-200/40 dark:border-blue-700/40 p-3 md:p-4" style={{ backfaceVisibility: "hidden" }}>
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-50/95 to-indigo-50/95 dark:from-blue-950/90 dark:to-indigo-950/90 shadow-2xl backdrop-blur-sm border-2 border-blue-200/40 dark:border-blue-700/40 p-3 md:p-4" style={{ backfaceVisibility: "hidden", borderRadius: "0 1.5rem 1.5rem 0" }}>
               {/* Right Page Title */}
               <div className="text-center mb-2">
                 <h3 className="text-xs md:text-sm font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                  Right Page
+                  2
                 </h3>
               </div>
 
@@ -280,7 +280,7 @@ const AnimatedCollectibleCards = () => {
             </div>
 
             {/* Back of right page - shows cover design when closed */}
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 rounded-r-3xl shadow-2xl p-3 md:p-4 overflow-hidden" style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden" }}>
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 shadow-2xl p-3 md:p-4 overflow-hidden" style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden", borderRadius: "1.5rem" }}>
               {/* Cover Design */}
               <div className="relative w-full h-full flex flex-col items-center justify-center">
                 {/* Decorative corner patterns */}
